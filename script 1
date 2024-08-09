@@ -1,0 +1,45 @@
+const ctx = document.getElementById('transactionChart').getContext('2d');
+const transactionChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Saldo',
+            data: [],
+            borderColor: '#388e3c',
+            fill: false,
+            tension: 0.1
+        }]
+    },
+    options: {
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Transações'
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Saldo (R$)'
+                }
+            }
+        }
+    }
+});
+
+function updateChart() {
+    transactionChart.data.labels.push(`Transação ${transactionChart.data.labels.length + 1}`);
+    transactionChart.data.datasets[0].data.push(balance);
+    transactionChart.update();
+}
+
+function addTransaction(amount, type) {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${type === 'deposit' ? 'Depósito' : 'Saque'}: R$ ${amount.toFixed(2)}`;
+    transactionHistory.appendChild(listItem);
+
+    // Atualiza o gráfico após cada transação
+    updateChart();
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Bancário</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Seção de Login -->
+    <div class="login-container" id="login-container">
+        <!-- ... -->
+    </div>
+
+    <!-- Simulador -->
+    <div class="container" id="simulator-container" style="display:none;">
+        <!-- Seções do simulador -->
+        <section class="balance-section"> <!-- ... --> </section>
+        <section class="transaction-section"> <!-- ... --> </section>
+        <section class="history-section"> <!-- ... --> </section>
+        
+        <!-- Gráfico -->
+        <section class="chart-section">
+            <h3>Resumo Gráfico</h3>
+            <canvas id="transactionChart"></canvas>
+        </section>
+    </div>
+
+    <section class="chart-section">
+        <h3>Resumo Gráfico</h3>
+        <canvas id="transactionChart"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </section>
+    
+    <div class="container">
+        <header>
+            <h1>Simulador de Transações Bancárias</h1>
+        </header>
+
+        <section class="balance-section">
+            <h2>Saldo Atual: <span id="balance">R$ 1000,00</span></h2>
+        </section>
+
+        <section class="transaction-section">
+            <h3>Nova Transação</h3>
+            <form id="transaction-form">
+                <label for="amount">Valor:</label>
+                <input type="number" id="amount" required>
+
+                <label for="type">Tipo:</label>
+                <select id="type">
+                    <option value="deposit">Depósito</option>
+                    <option value="withdrawal">Saque</option>
+                </select>
+
+                <button type="submit">Confirmar</button>
+            </form>
+        </section>
+
+        <section class="history-section">
+            <h3>Histórico de Transações</h3>
+            <ul id="transaction-history">
+                <!-- Histórico será preenchido aqui -->
+            </ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
